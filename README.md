@@ -1,4 +1,4 @@
-# final-space-api
+# Final Space
 
 ## Project setup
 ```
