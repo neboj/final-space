@@ -1,23 +1,29 @@
 <template>
   <div v-if="characters" class="characters">
     <h3>Characters</h3>
-    <div v-for="character in characters" :key="character.id" class="characters__card-container">
+    <div
+      v-for="character in characters"
+      :key="character.id"
+      class="characters__card-container"
+    >
       <Card
         :title="character.name"
         :img="character.img_url"
         :date="character.species"
         :customClass="'no-border'"
       />
-      <button @click="goToCharacter(character.id)" class="characters__btn">Show More</button>
+      <button @click="goToCharacter(character.id)" class="characters__btn">
+        Show More
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Card from '../components/Card.vue';
-import { ref } from '@vue/reactivity';
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Card from '../components/Card.vue';
+
 export default {
   components: {
     Card,
@@ -34,14 +40,12 @@ export default {
         console.log('Error:', err);
       });
 
-    const 
-        router = useRouter(),
-        goToCharacter = id => router.push(`/characters/${id}`);
-
+    const router = useRouter(),
+      goToCharacter = (id) => router.push(`/characters/${id}`);
 
     return {
       characters,
-      goToCharacter
+      goToCharacter,
     };
   },
 };
@@ -49,18 +53,18 @@ export default {
 
 <style lang="scss" scoped>
 .characters {
-    :deep(.card) {
-        .card__content {
-         padding-bottom: 0;
-        }
+  :deep(.card) {
+    .card__content {
+      padding-bottom: 0;
     }
-    &__btn {
-        margin-bottom: 20px;
-        padding: 10px 15px;
-        border: none;
-        &:hover {
-            cursor: pointer;
-        }
+  }
+  &__btn {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    border: none;
+    &:hover {
+      cursor: pointer;
     }
+  }
 }
 </style>

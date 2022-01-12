@@ -6,7 +6,7 @@
     <div v-if="quotes.length">
       <h4>Quotes</h4>
       <div v-for="quote in quotes" :key="quote.id">
-        <p>{{ quote.quote }}</p>
+        <blockquote>{{ quote.quote }}</blockquote>
       </div>
     </div>
   </div>
@@ -14,31 +14,28 @@
 
 <script>
 import { ref } from 'vue';
-import axios from 'axios';
 import { useRoute } from 'vue-router';
 
 export default {
   setup() {
     // Character
-
     const character = ref({});
     const route = useRoute();
 
-    axios
-      .get(`${process.env.VUE_APP_API_URL_CHARACTER}/${route.params.id}`)
-      .then((res) => {
-        character.value = res.data;
-      })
-      .catch((err) => {
-        console.log('Error:', err);
-      });
+    const characterPromise = axios.get(
+      `${process.env.VUE_APP_API_URL_CHARACTER}/${route.params.id}`
+    );
 
     // Quotes
     const quotes = ref([]);
-    axios
-      .get(process.env.VUE_APP_API_URL_CHARACTER_QUOTES)
-      .then((res) => {
-        quotes.value = res.data.filter(
+    const quotePromise = axios.get(
+      process.env.VUE_APP_API_URL_CHARACTER_QUOTES
+    );
+
+    Promise.all([characterPromise, quotePromise])
+      .then((values) => {
+        character.value = values[0].data;
+        quotes.value = values[1].data.filter(
           (quote) => quote.by === character.value?.name
         );
       })

@@ -15,11 +15,8 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity';
-import axios from 'axios';
-
+import { ref, computed } from 'vue';
 import Card from '../components/Card.vue';
-import { computed } from '@vue/runtime-core';
 // @ is an alias to /src
 
 export default {
