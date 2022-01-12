@@ -1,16 +1,12 @@
 <template>
   <div>
-      <h3>404</h3>
-      <p>Page not found.</p>
+    <h3>404</h3>
+    <p>Page not found.</p>
   </div>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>
