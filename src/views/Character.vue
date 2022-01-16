@@ -1,12 +1,23 @@
 <template>
+  <!-- Character -->
   <div class="character">
-    <h3>Character</h3>
-    <p>{{ character.name }}</p>
-    <img :src="character.img_url" />
-    <div v-if="quotes.length">
-      <h4>Quotes</h4>
-      <div v-for="quote in quotes" :key="quote.id">
-        <blockquote>{{ quote.quote }}</blockquote>
+    <!-- Page Title -->
+    <h3 class="page-title">Character</h3>
+
+    <!-- Name -->
+    <p class="character__title">{{ character.name }}</p>
+    <!-- Image -->
+    <img :src="character.img_url" class="character__img" />
+    <!-- Quotes -->
+    <div v-if="quotes.length" class="character__quotes">
+      <h4 class="character__quotes-title">Quotes</h4>
+      <div class="character__quotes-list">
+        <!-- Quote -->
+        <template v-for="quote in quotes" :key="quote.id">
+          <blockquote class="character__quotes-list__quote">
+            "{{ quote.quote }}"
+          </blockquote>
+        </template>
       </div>
     </div>
   </div>
@@ -15,9 +26,13 @@
 <script>
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
+import useToast from '@/composables/useToast.js';
 
 export default {
   setup() {
+    // Utils
+    const { toast } = useToast();
+
     // Character
     const character = ref({});
     const route = useRoute();
@@ -39,8 +54,8 @@ export default {
           (quote) => quote.by === character.value?.name
         );
       })
-      .catch((err) => {
-        console.log('Error:', err);
+      .catch(() => {
+        toast({ title: 'Error occurred', icon: 'error' });
       });
 
     return {
@@ -51,4 +66,25 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.character {
+  &__title {
+    font-weight: bold;
+  }
+  &__img {
+    margin: 10px;
+    border-radius: 5px;
+  }
+
+  &__quotes {
+    &-title {
+      font-weight: bold;
+    }
+    &-list {
+      &__quote {
+        font-style: italic;
+      }
+    }
+  }
+}
+</style>

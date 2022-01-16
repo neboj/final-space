@@ -1,13 +1,20 @@
 <template>
+  <!-- Home -->
   <div class="home">
-    <h3 class="home">Home</h3>
-    <p>
+    <!-- Page Title -->
+    <h3 class="home__title page-title">Home</h3>
+
+    <!-- Description -->
+    <p class="home__content">
       This is a Vue.js application for comedy space opera tv series Final Space
     </p>
     <p>You can view and search episodes, and learn more about each character</p>
 
-    <h3>Built with</h3>
-    <ul class="list">
+    <!-- Technologies Title -->
+    <h3 class="home__title page-title">Built with</h3>
+
+    <!-- Technologies list -->
+    <ul class="home__list">
       <li class="list__item">Vue.js (Composition API)</li>
       <li class="list__item">axios</li>
     </ul>
@@ -23,8 +30,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.list {
-  padding: 0;
-  list-style: none;
+.home {
+  &__list {
+    padding: 0;
+    list-style: none;
+  }
 }
 </style>

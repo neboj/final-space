@@ -1,31 +1,32 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/episodes">Episodes</router-link> |
-    <router-link to="/characters">Characters</router-link>
-  </div>
-  <router-view />
+  <TheHeader />
+  <main class="main">
+    <router-view />
+  </main>
 </template>
 
+<script>
+import TheHeader from './components/TheHeader.vue';
+export default {
+  components: {
+    TheHeader,
+  },
+};
+</script>
+
 <style lang="scss">
+@import './assets/styles.scss';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  min-height: 100vh;
 }
 
-#nav {
+.main {
   padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

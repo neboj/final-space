@@ -1,0 +1,10 @@
+@import 'base/base';
+
+body {
+    background-color: $color-body-bg;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin: 1rem auto;
+}

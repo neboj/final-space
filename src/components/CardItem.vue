@@ -1,18 +1,45 @@
 <template>
+  <!-- Card -->
   <div class="card" :class="customClass">
+    <!-- Image -->
     <img :alt="title + ' img'" class="card__img" :src="`${img}`" />
     <div class="card__content">
+      <!-- Title -->
       <h3 class="card__title">{{ title }}</h3>
       <div class="card__details">
+        <!-- Date -->
         <span class="card__date">{{ date }}</span>
       </div>
     </div>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  props: ['img', 'title', 'author', 'date', 'customClass'],
+  name: 'CardItem',
+  props: {
+    img: {
+      type: String,
+      default: '',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    author: {
+      type: String,
+      default: '',
+    },
+    date: {
+      type: String,
+      default: '',
+    },
+    customClass: {
+      type: String,
+      default: '',
+    },
+  },
   setup() {},
 };
 </script>
@@ -26,8 +53,17 @@ export default {
     border: none;
   }
 
+  &__img {
+    width: 100%;
+    border-radius: 2px;
+  }
+
   &__content {
     padding: 25px;
+  }
+
+  &__title {
+    font-weight: bold;
   }
 }
 </style>
