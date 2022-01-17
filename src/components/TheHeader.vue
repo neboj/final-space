@@ -2,7 +2,9 @@
   <header class="header">
     <div v-if="isLoggedIn" class="profile">
       <img :src="user.img" width="50" />
-      <span>{{ user.name }}</span>
+      <router-link to="/user" class="profile__link">{{
+        user.name
+      }}</router-link>
     </div>
     <nav class="nav">
       <!-- Home -->
@@ -59,6 +61,11 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 10px;
+
+    &__link {
+      color: inherit;
+      text-decoration: none;
+    }
   }
 
   .nav {

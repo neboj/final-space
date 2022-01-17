@@ -16,7 +16,22 @@
           :date="episode.air_date"
           :img="episode.img_url"
           :title="episode.name"
-        />
+        >
+          <template v-if="user.isLoggedIn">
+            <img
+              v-if="!localSelectedIdsMap[episode.id]"
+              src="../assets/img/star-solid-gray.svg"
+              class="episodes__favorite"
+              @click="toggleFavorite(episode)"
+            />
+            <img
+              v-else
+              src="../assets/img/star-solid-gold.svg"
+              class="episodes__favorite"
+              @click="toggleFavorite(episode)"
+            />
+          </template>
+        </CardItem>
       </template>
     </div>
   </div>
@@ -27,6 +42,7 @@
 <script>
 // @ is an alias to /src
 import { ref, computed } from 'vue';
+import useState from '@/composables/useState.js';
 import useToast from '@/composables/useToast.js';
 import CardItem from '../components/CardItem.vue';
 
@@ -38,7 +54,10 @@ export default {
   setup() {
     const episodes = ref([]);
     const { toast } = useToast();
+    const { state, favorEpisode, unfavorEpisode } = useState();
+    const user = computed(() => state.user);
 
+    // Fetch
     axios
       .get(process.env.VUE_APP_API_URL_EPISODE)
       .then((res) => {
@@ -48,6 +67,7 @@ export default {
         toast({ title: 'Error occurred', icon: 'error' });
       });
 
+    // Search
     const search = ref(''),
       searchResults = computed(() => {
         return episodes.value.filter((episode) =>
@@ -55,10 +75,32 @@ export default {
         );
       });
 
+    // Favor
+    const localSelectedIdsMap = computed(() => {
+      if (!state.user.episodes) return {};
+      const map = {};
+      state.user.episodes.forEach((episode) => {
+        map[episode.id] = episode;
+      });
+      return map;
+    });
+
+    const toggleFavorite = (episode) => {
+      if (!localSelectedIdsMap.value[episode.id]) {
+        favorEpisode(episode);
+      } else {
+        unfavorEpisode(episode);
+      }
+    };
+
     return {
       episodes,
       search,
       searchResults,
+      user,
+      toggleFavorite,
+      localSelectedIdsMap,
+      state,
     };
   },
 };
@@ -76,12 +118,18 @@ export default {
     justify-content: center;
   }
 
+  &__favorite {
+    cursor: pointer;
+  }
+
   :deep(.card) {
     background-color: white;
     border-radius: 5px;
     border: none;
+    padding: 25px;
     display: grid;
-    grid-template-columns: minmax(0, 200px) auto;
+    grid-template-columns: minmax(0, 100px) auto 24px;
+    gap: 15px;
 
     .card__img {
       display: grid;
@@ -98,6 +146,11 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      padding: none;
+    }
+
+    .card__title {
+      text-align: left;
     }
   }
 }

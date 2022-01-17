@@ -1,3 +1,4 @@
+import useState from '@/composables/useState.js';
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Episodes from '../views/Episodes.vue';
@@ -6,6 +7,7 @@ import Character from '../views/Character.vue';
 import PageNotFound from '../views/PageNotFound.vue';
 import Register from '../views/Register.vue';
 import Login from '../views/Login.vue';
+import User from '../views/User.vue';
 
 const routes = [
   {
@@ -37,6 +39,16 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login,
+  },
+  {
+    path: '/user',
+    name: 'User',
+    component: User,
+    beforeEnter: (to, from, next) => {
+      const { state } = useState();
+      if (!state.user.isLoggedIn) next({ name: 'Login' });
+      else next();
+    },
   },
   //404
   { path: '/:pathMatch(.*)*', component: PageNotFound },

@@ -46,7 +46,7 @@ export default {
     // utils
     const { loginUser } = useState();
     const router = useRouter(),
-      goToHome = () => router.push(`/`);
+      goToEpisodes = () => router.push(`/episodes`);
 
     // Form data
     const form = reactive({
@@ -71,7 +71,7 @@ export default {
 
       Object.keys(form).forEach((key) => (form[key] = ''));
       loginUser(dbUser);
-      goToHome();
+      goToEpisodes();
     };
 
     return {
