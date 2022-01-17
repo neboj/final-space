@@ -8,3 +8,19 @@ body {
     font-size: 2rem;
     margin: 1rem auto;
 }
+
+.btn {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    border: none;
+
+    &--primary {
+        background: #57ea4c;
+    }
+
+    &--secondary {
+        background: #61ccff;;
+    }
+}

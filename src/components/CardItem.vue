@@ -64,6 +64,7 @@ export default {
 
   &__title {
     font-weight: bold;
+    margin-bottom: 6px;
   }
 }
 </style>
