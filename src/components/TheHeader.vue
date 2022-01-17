@@ -1,5 +1,9 @@
 <template>
   <header class="header">
+    <div v-if="isLoggedIn" class="profile">
+      <img :src="user.img" width="50" />
+      <span>{{ user.name }}</span>
+    </div>
     <nav class="nav">
       <!-- Home -->
       <router-link to="/" class="nav__link">Home</router-link>
@@ -14,7 +18,7 @@
         <router-link to="/login" class="nav__link">Login</router-link>
       </template>
       <!-- Logout -->
-      <button v-else type="button" class="btn nav__link" @click="logout">
+      <button v-else type="button" class="btn nav__link" @click="logoutUser">
         Log out
       </button>
     </nav>
@@ -27,12 +31,13 @@ import { computed } from '@vue/reactivity';
 
 export default {
   setup() {
-    const { state, setLoggedIn } = useState();
+    const { state, logoutUser } = useState();
     const isLoggedIn = computed(() => state.user.isLoggedIn);
-    const logout = () => setLoggedIn(false);
+    const user = computed(() => state.user);
     return {
       isLoggedIn,
-      logout,
+      logoutUser,
+      user,
     };
   },
 };
@@ -41,12 +46,23 @@ export default {
 <style lang="scss" scoped>
 .header {
   background-color: white;
-  display: flex;
+  display: grid;
+  grid-template-areas: 'profile nav .';
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   justify-content: center;
   height: 100px;
 
+  .profile {
+    grid-area: profile;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
   .nav {
+    grid-area: nav;
     display: flex;
     gap: 20px;
     &__link {

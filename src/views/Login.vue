@@ -44,7 +44,7 @@ import { useRouter } from 'vue-router';
 export default {
   setup() {
     // utils
-    const { setLoggedIn } = useState();
+    const { loginUser } = useState();
     const router = useRouter(),
       goToHome = () => router.push(`/`);
 
@@ -70,7 +70,7 @@ export default {
       }
 
       Object.keys(form).forEach((key) => (form[key] = ''));
-      setLoggedIn(true);
+      loginUser(dbUser);
       goToHome();
     };
 

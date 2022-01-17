@@ -5,9 +5,18 @@ const state = reactive({
 });
 
 export default function () {
-  const setLoggedIn = (newValue) => (state.user.isLoggedIn = newValue);
+  const loginUser = (newUser) => {
+    state.user = newUser;
+    state.user.isLoggedIn = true;
+    state.user.img = `https://avatars.dicebear.com/api/bottts/${Math.random()}.png`;
+  };
+
+  const logoutUser = () => {
+    state.user = { isLoggedIn: false };
+  };
   return {
     state: readonly(state),
-    setLoggedIn,
+    loginUser,
+    logoutUser,
   };
 }
