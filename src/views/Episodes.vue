@@ -1,14 +1,14 @@
 <template>
-  <!-- Search episodes -->
-  <input type="text" v-model="search" placeholder="Search episodes title" />
-
+  <h3 class="episodes__title page-title">Episodes</h3>
   <!-- Episodes -->
-  <div v-if="searchResults.length" class="episodes">
-    <!-- Page title -->
-    <h3 class="episodes__title page-title">Episodes</h3>
+  <div class="episodes">
+    <!-- Search episodes -->
+    <div class="search-wrapper">
+      <input type="text" v-model="search" placeholder="Search episodes title" />
+    </div>
 
     <!-- List -->
-    <div class="episodes__list">
+    <div v-if="searchResults.length" class="episodes__list">
       <template v-for="episode in searchResults" :key="episode.id">
         <!-- Card -->
         <CardItem
@@ -34,9 +34,15 @@
         </CardItem>
       </template>
     </div>
+    <div v-else>
+      <img
+        src="https://avatars.dicebear.com/api/bottts/44.png"
+        alt="No search result image"
+      />
+      <p>No search results</p>
+    </div>
   </div>
   <!-- No results -->
-  <div v-else>No search results</div>
 </template>
 
 <script>
@@ -151,6 +157,15 @@ export default {
 
     .card__title {
       text-align: left;
+      font-style: italic;
+    }
+  }
+  .search-wrapper {
+    margin-bottom: 30px;
+    input {
+      border: none;
+      padding: 12px 18px;
+      font-size: 14px;
     }
   }
 }

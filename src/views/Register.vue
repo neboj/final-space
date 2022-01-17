@@ -74,6 +74,8 @@
 <script>
 import { reactive } from '@vue/reactivity';
 import useToast from '@/composables/useToast.js';
+import router from '@/router';
+
 export default {
   setup() {
     // utils
@@ -133,7 +135,11 @@ export default {
 
       toast({ title: 'Registration successful', icon: 'success' });
       localStorage.setItem('login', JSON.stringify(form));
+      console.log('router', router);
+      router.push('login');
+      console.log('form', form);
       Object.keys(form).forEach((key) => (form[key] = ''));
+      //redirect to login
     };
 
     return {

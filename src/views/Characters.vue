@@ -15,7 +15,12 @@
           :custom-class="'no-border'"
         >
           <!-- Show more -->
-          <button @click="goToCharacter(character.id)" class="characters__btn">
+          <button
+            @click="
+              $router.push({ name: 'Character', params: { id: character.id } })
+            "
+            class="characters__btn"
+          >
             Show More
           </button>
         </CardItem>
@@ -26,7 +31,6 @@
 
 <script>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
 import useToast from '@/composables/useToast.js';
 import CardItem from '../components/CardItem.vue';
 
@@ -47,12 +51,8 @@ export default {
         toast({ title: 'Error occurred', icon: 'error' });
       });
 
-    const router = useRouter(),
-      goToCharacter = (id) => router.push(`/characters/${id}`);
-
     return {
       characters,
-      goToCharacter,
     };
   },
 };
@@ -80,11 +80,11 @@ export default {
     border: 1px solid transparent;
     border-radius: 5px;
     color: white;
-    background: #61ccff;
+    background: #6867ac;
+    transition: background-color 300ms;
     &:hover {
       cursor: pointer;
-      box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
-      border-color: #838383;
+      background: #8988be;
     }
   }
 }

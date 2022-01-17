@@ -82,7 +82,7 @@ export default {
     }
     &-list {
       &__quote {
-        margin: 15px auto;
+        margin: px auto;
         font-style: italic;
       }
     }

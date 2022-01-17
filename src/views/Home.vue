@@ -1,9 +1,6 @@
 <template>
   <!-- Home -->
   <div class="home">
-    <!-- Page Title -->
-    <h3 class="home__title page-title">Home</h3>
-
     <!-- Description -->
     <p class="home__content">
       This is a Vue.js application for comedy space opera tv series Final Space

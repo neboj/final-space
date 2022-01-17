@@ -39,14 +39,12 @@
 <script>
 import { reactive, ref } from '@vue/reactivity';
 import useState from '@/composables/useState.js';
-import { useRouter } from 'vue-router';
+import router from '@/router';
 
 export default {
   setup() {
     // utils
     const { loginUser } = useState();
-    const router = useRouter(),
-      goToEpisodes = () => router.push(`/episodes`);
 
     // Form data
     const form = reactive({
@@ -71,7 +69,7 @@ export default {
 
       Object.keys(form).forEach((key) => (form[key] = ''));
       loginUser(dbUser);
-      goToEpisodes();
+      router.push('episodes');
     };
 
     return {

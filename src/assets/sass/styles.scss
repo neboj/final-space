@@ -2,27 +2,27 @@
 @import 'partials/partials';
 
 body {
-    background-color: $color-body-bg;
+  background-color: $color-body-bg;
 }
 
 .page-title {
-    font-size: 2rem;
-    margin: 1rem auto;
+  font-size: 2rem;
+  margin: 2rem auto;
 }
 
 .btn {
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    color: white;
-    border: none;
-    cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  cursor: pointer;
 
-    &--primary {
-        background: #57ea4c;
-    }
+  &--primary {
+    background: #57ea4c;
+  }
 
-    &--secondary {
-        background: #61ccff;;
-    }
+  &--secondary {
+    background: #61ccff;
+  }
 }

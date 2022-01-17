@@ -1,14 +1,11 @@
 import { reactive, readonly } from 'vue';
-import { useRouter } from 'vue-router';
+import router from '@/router';
 
 const state = reactive({
   user: { isLoggedIn: false },
 });
 
 export default function () {
-  const router = useRouter(),
-    goToEpisodes = () => router.push(`/episodes`);
-
   const loginUser = (newUser) => {
     state.user = newUser;
     state.user.isLoggedIn = true;
@@ -18,7 +15,7 @@ export default function () {
 
   const logoutUser = () => {
     state.user = { isLoggedIn: false };
-    goToEpisodes();
+    router.push('episodes');
   };
 
   const favorEpisode = (episode) => state.user.episodes.push(episode);

@@ -66,5 +66,9 @@ export default {
     font-weight: bold;
     margin-bottom: 6px;
   }
+  &__date {
+    font-size: 85%;
+    font-style: italic;
+  }
 }
 </style>

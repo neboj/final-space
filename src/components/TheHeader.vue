@@ -53,7 +53,7 @@ export default {
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 60px;
 
   .profile {
     grid-area: profile;
@@ -78,10 +78,14 @@ export default {
       padding: 5px 10px;
       border-radius: 5px;
       cursor: pointer;
+      transition: color 0.3s;
+      &:hover {
+        color: #6867ac;
+      }
 
       &.router-link-active {
         color: white;
-        background-color: #57ea4c;
+        background-color: #6867ac;
       }
     }
   }
