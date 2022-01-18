@@ -65,6 +65,9 @@ export default {
     &__link {
       color: inherit;
       text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 

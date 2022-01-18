@@ -11,7 +11,7 @@
       <p class="user__email">{{ user.email }}</p>
     </div>
 
-    <div class="episodes">
+    <div v-if="episodes.length" class="episodes">
       <h3 class="episodes__title">Favorite episodes</h3>
       <ul class="episodes__list">
         <li
