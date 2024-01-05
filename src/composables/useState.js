@@ -9,7 +9,7 @@ export default function () {
   const loginUser = (newUser) => {
     state.user = newUser;
     state.user.isLoggedIn = true;
-    state.user.img = `https://avatars.dicebear.com/api/bottts/${Math.random()}.png`;
+    state.user.img = `https://api.dicebear.com/7.x/bottts/png?seed=${Math.random()}`;
     state.user.episodes = [];
   };
 

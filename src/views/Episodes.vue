@@ -36,7 +36,7 @@
     </div>
     <div v-else>
       <img
-        src="https://avatars.dicebear.com/api/bottts/44.png"
+        src="https://api.dicebear.com/7.x/bottts/png?seed=44"
         alt="No search result image"
       />
       <p>No search results</p>

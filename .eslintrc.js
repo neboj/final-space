@@ -15,4 +15,5 @@ module.exports = {
   globals: {
     axios: true,
   },
+  ignorePatterns: ['server.js'],
 };
