@@ -4,8 +4,7 @@ This is an application for comedy space opera tv series Final Space.
 
 Built with `Vue.js (Composition API)` and `axios` using [Final Space public API](https://finalspaceapi.com/)
 
-Deployed on Netlify [https://final-space-production.up.railway.app/](https://cheerful-sable-cf37de.netlify.app/)
-
+Deployed on Netlify https://cheerful-sable-cf37de.netlify.app/
 
 
 ## Project setup
