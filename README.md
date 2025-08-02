@@ -1,10 +1,12 @@
 # Final Space
 
+Deployed on Vercel [https://cheerful-sable-cf37de.netlify.app/](https://final-space-ten.vercel.app/)
+
+
+
 This is an application for comedy space opera tv series Final Space.
 
 Built with `Vue.js (Composition API)` and `axios` using [Final Space public API](https://finalspaceapi.com/)
-
-Deployed on Netlify https://cheerful-sable-cf37de.netlify.app/
 
 
 ## Project setup
