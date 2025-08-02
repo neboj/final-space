@@ -1,6 +1,6 @@
 # Final Space
 
-Deployed on Vercel [https://cheerful-sable-cf37de.netlify.app/](https://final-space-ten.vercel.app/)
+Deployed on Vercel: [https://final-space-ten.vercel.app/](https://final-space-ten.vercel.app/)
 
 
 
